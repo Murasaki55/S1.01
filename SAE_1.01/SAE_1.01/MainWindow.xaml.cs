@@ -112,7 +112,7 @@ namespace Projet
             {
                 Canvas.SetLeft(joueur, Canvas.GetLeft(joueur) - (vitesse));
             }
-            else if (Droite && Canvas.GetLeft(joueur) + joueur.Width * 1.5< Application.Current.MainWindow.Width)
+            else if (Droite && Canvas.GetLeft(joueur) + joueur.Width * 1.5 < Application.Current.MainWindow.Width)
             {
                 Canvas.SetLeft(joueur, Canvas.GetLeft(joueur) + (vitesse));
             }
@@ -120,7 +120,7 @@ namespace Projet
             {
                 Canvas.SetTop(joueur, Canvas.GetTop(joueur) - (vitesse));
             }
-            else if (Bas && Canvas.GetTop(joueur) + joueur.Height * 1.5< Application.Current.MainWindow.Height)
+            else if (Bas && Canvas.GetTop(joueur) + joueur.Height * 1.5 < Application.Current.MainWindow.Height)
             {
                 Canvas.SetTop(joueur, Canvas.GetTop(joueur) + (vitesse));
             }
