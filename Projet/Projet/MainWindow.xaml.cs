@@ -179,12 +179,7 @@ namespace Projet
                         joueurSprite.ImageSource = new BitmapImage(new Uri("images/joueur1.png", UriKind.RelativeOrAbsolute));
                         joueur.Fill = joueurSprite;
                         Canvas.SetTop(joueur, Canvas.GetTop(joueur) - (vitesse));
-
-                        if (joueurHitBox.IntersectsWith(cubeHitBox))
-                        {
-                            Canvas.SetTop(joueur, Canvas.GetTop(joueur) + (vitesse*1.60));
                         }
-                    }
                     else if (Bas && Canvas.GetTop(joueur) + joueur.Height * 1.5 < Application.Current.MainWindow.Height)
                     {
                         joueurSprite.ImageSource = new BitmapImage(new Uri("images/joueur3.png", UriKind.RelativeOrAbsolute));
