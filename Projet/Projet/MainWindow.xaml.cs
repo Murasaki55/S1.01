@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Numerics;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -33,10 +34,12 @@ namespace Projet
         ImageBrush boutonSprite = new ImageBrush();
         ImageBrush porteSprite = new ImageBrush();
 
-        int salle = 0;
-        double vitesse = 10;
+        string salle = "0";
+        int vitesse = 10;
+        int vitessecube = 11;
 
-        bool Gauche, Droite, Haut, Bas = false;
+        bool Gauche, Droite, Haut, Bas, E = false;
+        bool ouvert = false;
 
         public MainWindow()
         {
@@ -49,19 +52,19 @@ namespace Projet
             dispatcherTimer.Interval = TimeSpan.FromMilliseconds(20);
             dispatcherTimer.Start();
 
-            joueurSprite.ImageSource = new BitmapImage(new Uri("P:\\S1.01\\Projet\\Projet\\Image\\joueur.png"));
+            joueurSprite.ImageSource = new BitmapImage(new Uri("images/joueur1.png", UriKind.RelativeOrAbsolute));
             joueur.Fill = joueurSprite;
 
-            cubeSprite.ImageSource = new BitmapImage(new Uri("P:\\S1.01\\Projet\\Projet\\Image\\carrer1.png"));
+            cubeSprite.ImageSource = new BitmapImage(new Uri("images/carrer1.png", UriKind.RelativeOrAbsolute));
             cube.Fill = cubeSprite;
 
-            porteSprite.ImageSource = new BitmapImage(new Uri("P:\\S1.01\\Projet\\Projet\\Image\\porte1.png"));
+            porteSprite.ImageSource = new BitmapImage(new Uri("images/porte1.png", UriKind.RelativeOrAbsolute));
             porte.Fill = porteSprite;
 
-            boutonSprite.ImageSource = new BitmapImage(new Uri("P:\\S1.01\\Projet\\Projet\\Image\\bouton.png"));
+            boutonSprite.ImageSource = new BitmapImage(new Uri("images/bouton.png", UriKind.RelativeOrAbsolute));
             bouton.Fill = boutonSprite;
 
-            solSprite.ImageSource = new BitmapImage(new Uri("P:\\S1.01\\Projet\\Projet\\Image\\sol.jpg"));
+            solSprite.ImageSource = new BitmapImage(new Uri("images/sol.png", UriKind.RelativeOrAbsolute));
             sol.Fill = solSprite;
         }
 
@@ -82,6 +85,10 @@ namespace Projet
             if (e.Key == Key.Down)
             {
                 Bas = true;
+            }
+            if (e.Key == Key.E)
+            {
+                E = true;
             }
 
         }
@@ -104,26 +111,200 @@ namespace Projet
             {
                 Bas = false;
             }
+            if (e.Key == Key.E)
+            {
+                E = false;
+            }
         }
 
         private void BoucleJeux(object sender, EventArgs e)
         {
-            if (Gauche && Canvas.GetLeft(joueur) > 0)
+            
+
+            //création Hitbox
+            joueurHitBox = new Rect(Canvas.GetLeft(joueur), Canvas.GetTop(joueur), joueur.Width-17, joueur.Height-5);
+            cubeHitBox = new Rect(Canvas.GetLeft(cube), Canvas.GetTop(cube), cube.Width, cube.Height);
+            boutonHitBox = new Rect(Canvas.GetLeft(bouton), Canvas.GetTop(bouton), bouton.Width-20, bouton.Height-20);
+            porteHitBox = new Rect(Canvas.GetLeft(porte), Canvas.GetTop(porte), porte.Width, porte.Height);
+
+            //collision joueur cube
+            if (joueurHitBox.IntersectsWith(cubeHitBox) && E)
             {
-                Canvas.SetLeft(joueur, Canvas.GetLeft(joueur) - (vitesse));
+                //faire bouger le cube
+                if (Gauche && Canvas.GetLeft(joueur) > 50)
+                {
+                    Canvas.SetLeft(cube, Canvas.GetLeft(cube) - (vitessecube));
+                }
+                else if (Droite && Canvas.GetLeft(joueur) + cube.Width * 2.10 < Application.Current.MainWindow.Width)
+                {
+                    Canvas.SetLeft(cube, Canvas.GetLeft(cube) + (vitessecube));
+                }
+                else if (Haut && Canvas.GetTop(joueur) > 50)
+                {
+                    Canvas.SetTop(cube, Canvas.GetTop(cube) - (vitessecube));
+                }
+                else if (Bas && Canvas.GetTop(joueur) + cube.Height * 2.50 < Application.Current.MainWindow.Height)
+                {
+                    Canvas.SetTop(cube, Canvas.GetTop(cube) + (vitessecube));
+                }
             }
-            else if (Droite && Canvas.GetLeft(joueur) + joueur.Width * 1.5< Application.Current.MainWindow.Width)
+            else
             {
-                Canvas.SetLeft(joueur, Canvas.GetLeft(joueur) + (vitesse));
+                if (joueurHitBox.IntersectsWith(cubeHitBox))
+                {//bloquer le personnage
+                    if (Gauche && Canvas.GetLeft(joueur) > 0)
+                    {
+                        joueurSprite.ImageSource = new BitmapImage(new Uri("images/joueur4.png", UriKind.RelativeOrAbsolute));
+                        joueur.Fill = joueurSprite;
+                        Canvas.SetLeft(joueur, Canvas.GetLeft(joueur) - (vitesse));
+
+                        if (joueurHitBox.IntersectsWith(cubeHitBox))
+                        {
+                            Canvas.SetLeft(joueur, Canvas.GetLeft(joueur) + (vitesse * 1.60));
+                        }
+                    }
+                    else if (Droite && Canvas.GetLeft(joueur) + joueur.Width * 1.5 < Application.Current.MainWindow.Width)
+                    {
+                        joueurSprite.ImageSource = new BitmapImage(new Uri("images/joueur2.png", UriKind.RelativeOrAbsolute));
+                        joueur.Fill = joueurSprite;
+                        Canvas.SetLeft(joueur, Canvas.GetLeft(joueur) + (vitesse));
+
+                        if (joueurHitBox.IntersectsWith(cubeHitBox))
+                        {
+                            Canvas.SetLeft(joueur, Canvas.GetLeft(joueur) - (vitesse*1.60));
+                        }
+                    }
+                    else if (Haut && Canvas.GetTop(joueur) > 0)
+                    {
+                        joueurSprite.ImageSource = new BitmapImage(new Uri("images/joueur1.png", UriKind.RelativeOrAbsolute));
+                        joueur.Fill = joueurSprite;
+                        Canvas.SetTop(joueur, Canvas.GetTop(joueur) - (vitesse));
+
+                        if (joueurHitBox.IntersectsWith(cubeHitBox))
+                        {
+                            Canvas.SetTop(joueur, Canvas.GetTop(joueur) + (vitesse*1.60));
+                        }
+                    }
+                    else if (Bas && Canvas.GetTop(joueur) + joueur.Height * 1.5 < Application.Current.MainWindow.Height)
+                    {
+                        joueurSprite.ImageSource = new BitmapImage(new Uri("images/joueur3.png", UriKind.RelativeOrAbsolute));
+                        joueur.Fill = joueurSprite;
+                        Canvas.SetTop(joueur, Canvas.GetTop(joueur) + (vitesse));
+
+                        if (joueurHitBox.IntersectsWith(cubeHitBox))
+                        {
+                            Canvas.SetTop(joueur, Canvas.GetTop(joueur) - (vitesse*1.60));
+                        }
+                    }
+                }
+                else
+                {//bouger le personnage
+                    if (Gauche && Canvas.GetLeft(joueur) > 0)
+                    {
+                        joueurSprite.ImageSource = new BitmapImage(new Uri("images/joueur4.png", UriKind.RelativeOrAbsolute));
+                        joueur.Fill = joueurSprite;
+                        Canvas.SetLeft(joueur, Canvas.GetLeft(joueur) - (vitesse));
+                    }
+                    else if (Droite && Canvas.GetLeft(joueur) + joueur.Width * 1.5 < Application.Current.MainWindow.Width)
+                    {
+                        joueurSprite.ImageSource = new BitmapImage(new Uri("images/joueur2.png", UriKind.RelativeOrAbsolute));
+                        joueur.Fill = joueurSprite;
+                        Canvas.SetLeft(joueur, Canvas.GetLeft(joueur) + (vitesse));
+                    }
+                    else if (Haut && Canvas.GetTop(joueur) > 0)
+                    {
+                        joueurSprite.ImageSource = new BitmapImage(new Uri("images/joueur1.png", UriKind.RelativeOrAbsolute));
+                        joueur.Fill = joueurSprite;
+                        Canvas.SetTop(joueur, Canvas.GetTop(joueur) - (vitesse));
+                    }
+                    else if (Bas && Canvas.GetTop(joueur) + joueur.Height * 1.5 < Application.Current.MainWindow.Height)
+                    {
+                        joueurSprite.ImageSource = new BitmapImage(new Uri("images/joueur3.png", UriKind.RelativeOrAbsolute));
+                        joueur.Fill = joueurSprite;
+                        Canvas.SetTop(joueur, Canvas.GetTop(joueur) + (vitesse));
+                    }
+                }
+                
             }
-            else if (Haut && Canvas.GetTop(joueur) > 0)
+            //collision joueur bouton / cube bouton
+            if (joueurHitBox.IntersectsWith(boutonHitBox))
             {
-                Canvas.SetTop(joueur, Canvas.GetTop(joueur) - (vitesse));
+                porteSprite.ImageSource = new BitmapImage(new Uri("images/porte2.png", UriKind.RelativeOrAbsolute));
+                porte.Fill = porteSprite;
+                ouvert = true;
             }
-            else if (Bas && Canvas.GetTop(joueur) + joueur.Height * 1.5< Application.Current.MainWindow.Height)
+            else if (cubeHitBox.IntersectsWith(boutonHitBox))
             {
-                Canvas.SetTop(joueur, Canvas.GetTop(joueur) + (vitesse));
+                cubeSprite.ImageSource = new BitmapImage(new Uri("images/carrer2.png", UriKind.RelativeOrAbsolute));
+                cube.Fill = cubeSprite;
+                porteSprite.ImageSource = new BitmapImage(new Uri("images/porte2.png", UriKind.RelativeOrAbsolute));
+                porte.Fill = porteSprite;
+                ouvert = true;
+            }
+            else
+            {
+                cubeSprite.ImageSource = new BitmapImage(new Uri("images/carrer1.png", UriKind.RelativeOrAbsolute));
+                cube.Fill = cubeSprite;
+                porteSprite.ImageSource = new BitmapImage(new Uri("images/porte1.png", UriKind.RelativeOrAbsolute));
+                porte.Fill = porteSprite;
+                ouvert = false;
+            }
+            //collision joueur porte
+                if (ouvert && joueurHitBox.IntersectsWith(porteHitBox))
+                {
+                    switch (salle)
+                    {
+                        case "0":
+                        {
+                            salle = "1";
+                            NumSalle.Content = "Salle : " + salle + "/6";
+                            ouvert = false;
+                            break;
+                        }
+                        case "1":
+                        {
+                            salle = "2";
+                            NumSalle.Content = "Salle : " + salle + "/6";
+                            ouvert = false;
+                            break;
+                        }
+                        case "2":
+                        {
+                            salle = "3";
+                            NumSalle.Content = "Salle : " + salle + "/6";
+                            ouvert = false;
+                            break;
+                        }
+                        case "3":
+                        {
+                            salle = "4";
+                            NumSalle.Content = "Salle : " + salle + "/6";
+                            ouvert = false;
+                            break;
+                        }
+                        case "4":
+                        {
+                            salle = "5";
+                            NumSalle.Content = "Salle : " + salle + "/6";
+                            ouvert = false;
+                            break;
+                        }
+                        case "5":
+                        {
+                            salle = "6";
+                            NumSalle.Content = "Salle : " + salle + "/6";
+                            ouvert = false;
+                            break;
+                        }
+                        case "6":
+                        {
+                            salle = "7";
+                            NumSalle.Content = "End";
+                            ouvert = false;
+                            break;
+                        }
+                    }
+                }
             }
         }
     }
-}

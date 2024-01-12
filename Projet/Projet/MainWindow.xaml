@@ -6,57 +6,16 @@
     xmlns:local="clr-namespace:Projet"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     Title="Aperture pixel"
-    Width="800"
-    Height="450"
+    Width="1097"
+    Height="753"
     WindowStartupLocation="CenterScreen"
     mc:Ignorable="d">
-    <Canvas
-        Name="monCanvas"
-        Background="MediumPurple"
-        Focusable="True"
-        KeyDown="Canvas_KeyDown"
-        KeyUp="Canvas_KeyUp">
-        <Rectangle
-            Name="sol"
-            Canvas.Left="-27"
-            Canvas.Top="-16"
-            Width="861"
-            Height="477"
-            HorizontalAlignment="Left"
-            VerticalAlignment="Center"
-            Fill="Orange" />
-        <Rectangle
-            Name="bouton"
-            Canvas.Left="714"
-            Canvas.Top="177"
-            Width="70"
-            Height="70"
-            Fill="Green" />
-        <Rectangle
-            Name="cube"
-            Canvas.Left="370"
-            Canvas.Top="187"
-            Width="60"
-            Height="60"
-            Fill="Red" />
-        <Rectangle
-            Name="porte"
-            Canvas.Left="694"
-            Canvas.Top="10"
-            Width="90"
-            Height="90"
-            Fill="Blue" />
-        <Rectangle
-            Name="joueur"
-            Canvas.Left="19"
-            Canvas.Top="316"
-            Width="40"
-            Height="85"
-            Fill="Brown" />
-        <Label
-            Name="NumSalle"
-            Content="Salle : 0 /6"
-            FontSize="22"
-            FontWeight="Bold" />
+    <Canvas Name="monCanvas" Focusable="True" KeyDown="Canvas_KeyDown" KeyUp="Canvas_KeyUp" Background="LightBlue">
+        <Rectangle Name="sol" Height="834" Width="1204" Fill="Orange" HorizontalAlignment="Left" VerticalAlignment="Center" Canvas.Top="-32" Canvas.Left="-54"/>
+        <Rectangle Name="bouton" Height="70" Width="70" Fill="Green" Canvas.Top="176" Canvas.Left="948" HorizontalAlignment="Center" VerticalAlignment="Top" />
+        <Rectangle Name="porte" Height="90" Width="90" Fill="Blue" Canvas.Top="29" Canvas.Left="704" HorizontalAlignment="Left" VerticalAlignment="Center" />
+        <Rectangle Name="cube" Height="60" Width="60" Fill="Red" Canvas.Top="392" Canvas.Left="349" />
+        <Rectangle Name="joueur" Height="70" Width="65" Fill="Brown" Canvas.Top="633" Canvas.Left="20" HorizontalAlignment="Left" VerticalAlignment="Top" />
+        <Label Name="NumSalle" FontSize="22" FontWeight="Bold" Content="Salle: 0/6" />
     </Canvas>
 </Window>
