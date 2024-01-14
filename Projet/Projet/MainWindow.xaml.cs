@@ -68,6 +68,8 @@ namespace Projet
         public MainWindow()
         {
             InitializeComponent();
+            Menu fenetreMenu = new Menu();
+            fenetreMenu.ShowDialog();
 
             monCanvas.Focus();
 

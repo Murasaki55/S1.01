@@ -1,0 +1,21 @@
+﻿<Window x:Class="Projet.Menu"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Projet"
+        mc:Ignorable="d"
+        Title="LevelDialog" Height="450" Width="800" Background="black">
+    <Grid>
+        <Canvas>
+            <Button x:Name="niv1" Background="Black" BorderThickness="5" BorderBrush="White" Content="1" Height="40" Width="40" TextBlock.TextAlignment="Center" Canvas.Left="240" Canvas.Top="192" Foreground="White"/>
+            <Button x:Name="niv2" Background="Black" BorderThickness="5" BorderBrush="White" Content="2" Height="40" Width="40" TextBlock.TextAlignment="Center" Canvas.Left="320" Canvas.Top="192" Foreground="White"/>
+            <Button x:Name="niv3" Background="Black" BorderThickness="5" BorderBrush="White" Content="3" Height="40" Width="40" TextBlock.TextAlignment="Center" Canvas.Left="400" Canvas.Top="192" Foreground="White"/>
+            <Button x:Name="niv4" Background="Black" BorderThickness="5" BorderBrush="White" Content="4" Height="40" Width="40" TextBlock.TextAlignment="Center" Canvas.Left="480" Canvas.Top="192" Foreground="White"/>
+            <Button x:Name="niv5" Background="Black" BorderThickness="5" BorderBrush="White" Content="5" Height="40" Width="40" TextBlock.TextAlignment="Center" Canvas.Left="560" Canvas.Top="192" Foreground="White"/>
+            <Label Width="142" HorizontalAlignment="Left" FontSize="46"  Content="MENU" Canvas.Left="329" Canvas.Top="55" Foreground="White"/>
+            <Button x:Name="niv0" Background="Black" BorderThickness="5" BorderBrush="White" Content="0" Height="40" Width="40" TextBlock.TextAlignment="Center" Canvas.Left="160" Canvas.Top="192" Foreground="White"/>
+            <Button x:Name="quitter" Background="Black" BorderThickness="5" BorderBrush="White" Content="Quitter" Height="40" Width="160" TextBlock.TextAlignment="Center" Canvas.Left= "320" Canvas.Top="300" Foreground="White"/>
+        </Canvas>
+    </Grid>
+</Window>
