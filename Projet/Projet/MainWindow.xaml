@@ -28,8 +28,10 @@
         <Rectangle Name="portail1S2" Height="90" Width="85" Fill="Pink" Canvas.Top="458" Canvas.Left="410" HorizontalAlignment="Left" VerticalAlignment="Top" Visibility="Hidden" />
         <Rectangle Name="portail2S2" Height="90" Width="85" Fill="Pink" Canvas.Top="458" Canvas.Left="592" HorizontalAlignment="Left" VerticalAlignment="Center" Visibility="Hidden" />
         <Rectangle Name="mur" Height="753" Width="120" Fill="DarkGray" Canvas.Top="-8" Canvas.Left="480" HorizontalAlignment="Left" VerticalAlignment="Center" Visibility="Hidden" />
-        <Rectangle Name="mur2" Height="87" Width="497" Fill="DarkGray" Canvas.Top="334" Canvas.Left="600" Visibility="Hidden" />
+        <Rectangle Name="mur2" Height="86" Width="497" Fill="DarkGray" Canvas.Top="342" HorizontalAlignment="Left" VerticalAlignment="Center" Visibility="Hidden" />
+        <Rectangle Name="tourelleH" Height="100" Width="100" Fill="White" Canvas.Top="10" Canvas.Left="191" HorizontalAlignment="Center" VerticalAlignment="Top" Visibility="Hidden" />
+        <Rectangle Name="tourelleV" Height="100" Width="100" Fill="White" Canvas.Top="491" Canvas.Left="983" HorizontalAlignment="Center" VerticalAlignment="Top" />
         <Rectangle Name="joueur" Height="70" Width="65" Fill="Brown" Canvas.Top="633" Canvas.Left="20" HorizontalAlignment="Left" VerticalAlignment="Top" />
-        <Label Name="NumSalle" FontSize="22" FontWeight="Bold" Content="Salle: 0/6" />
+        <Label Name="NumSalle" FontSize="22" FontWeight="Bold" Content="Salle: 0/5" />
     </Canvas>
 </Window>
