@@ -35,6 +35,7 @@ namespace Projet
         private Rect boutonP2BoiteCollision;
         private Rect boutonBBoiteCollision;
         private Rect boutonCBoiteCollision;
+        private Rect boutonC2BoiteCollision;
         private Rect boutonJBoiteCollision;
         private Rect porteBoiteCollision;
         private Rect murBoiteCollision;
@@ -70,17 +71,16 @@ namespace Projet
         private readonly int VITESSECUBE = 11;
         private readonly int VITESSEBALLE = 20;
 
-        int largeurmax = 1100;
-        int hauteurmax = 800;
-
         private int tempsBoutonJ = 15;
-        private string salle = "4";
+        private string salle = "5";
         private bool Gauche, Droite, Haut, Bas, E = false;
         private bool ouvert = false;
 
         private List<Rectangle> objetSupprimer = new List<Rectangle>();
 
         private DispatcherTimer minutrieBoutonJ;
+        private DispatcherTimer minutrietireH;
+        private DispatcherTimer minutrietireV;
         public MainWindow()
         {
             InitializeComponent();
@@ -98,6 +98,16 @@ namespace Projet
             minutrieBoutonJ.Tick += CollisionBoutonJ;
             minutrieBoutonJ.Interval = TimeSpan.FromMilliseconds(1000);
             minutrieBoutonJ.Start();
+
+            minutrietireH = new DispatcherTimer();
+            minutrietireH.Tick += CreerBalleH;
+            minutrietireH.Interval = TimeSpan.FromMilliseconds(250);
+            minutrietireH.Start();
+
+            minutrietireV = new DispatcherTimer();
+            minutrietireV.Tick += CreerBalleV;
+            minutrietireV.Interval = TimeSpan.FromMilliseconds(250);
+            minutrietireV.Start();
 
             CacherObjet();
 
@@ -122,6 +132,7 @@ namespace Projet
             boutonB.Fill = boutonBSprite;
             boutonCSprite.ImageSource = new BitmapImage(new Uri("images/boutonCube.png", UriKind.RelativeOrAbsolute));
             boutonC.Fill = boutonCSprite;
+            boutonC2.Fill = boutonCSprite;
             boutonJSprite.ImageSource = new BitmapImage(new Uri("images/boutonJoueur.png", UriKind.RelativeOrAbsolute));
             boutonJ.Fill = boutonJSprite;
 
@@ -311,6 +322,55 @@ namespace Projet
                 case "3":
                     {
                         //bouton
+                        Canvas.SetTop(boutonP1, 667);
+                        Canvas.SetLeft(boutonP1, 742);
+                        boutonP1.Visibility = Visibility.Visible;
+
+                        Canvas.SetTop(boutonP2, 223);
+                        Canvas.SetLeft(boutonP2, 0);
+                        boutonP2.Visibility = Visibility.Visible;
+
+                        Canvas.SetTop(boutonJ, 424);
+                        Canvas.SetLeft(boutonJ, 313);
+                        boutonJ.Visibility = Visibility.Visible;
+                        //joueur
+                        Canvas.SetTop(joueur, 633);
+                        Canvas.SetLeft(joueur, 20);
+                        //cube/boule
+                        Canvas.SetTop(cube1, 608);
+                        Canvas.SetLeft(cube1, 248);
+                        cube1.Visibility = Visibility.Visible;
+
+                        Canvas.SetTop(cube2, 84);
+                        Canvas.SetLeft(cube2, 907);
+                        cube2.Visibility = Visibility.Visible;
+                        //mur
+                        Canvas.SetTop(mur, 511);
+                        Canvas.SetLeft(mur, 530);
+                        mur.Visibility = Visibility.Visible;
+
+                        Canvas.SetTop(mur2, 300);
+                        Canvas.SetLeft(mur2, 0);
+                        mur2.Visibility = Visibility.Visible;
+                        //tourelle
+                        Canvas.SetTop(tourelleH, 10);
+                        Canvas.SetLeft(tourelleH, 191);
+                        tourelleH.Visibility = Visibility.Visible;
+
+                        Canvas.SetTop(tourelleV, 491);
+                        Canvas.SetLeft(tourelleV, 983);
+                        tourelleV.Visibility = Visibility.Visible;
+                        //protection
+                        Canvas.SetTop(protectionH, 144);
+                        Canvas.SetLeft(protectionH, 10);
+
+                        Canvas.SetTop(protectionV, 328);
+                        Canvas.SetLeft(protectionV, 907);
+                        break;
+                    }
+                case "4":
+                    {
+                        //bouton
                         Canvas.SetTop(boutonP, 250);
                         Canvas.SetLeft(boutonP, 10);
                         boutonP.Visibility = Visibility.Visible;
@@ -339,16 +399,28 @@ namespace Projet
                         tourelleV.Visibility = Visibility.Visible;
                         break;
                     }
-                case "4":
+                case "5":
                     {
                         //bouton
-                        Canvas.SetTop(boutonP1, 667);
-                        Canvas.SetLeft(boutonP1, 742);
+                        Canvas.SetTop(boutonP1, 163);
+                        Canvas.SetLeft(boutonP1, 937);
                         boutonP1.Visibility = Visibility.Visible;
 
                         Canvas.SetTop(boutonP2, 223);
-                        Canvas.SetLeft(boutonP2, 0);
+                        Canvas.SetLeft(boutonP2, 10);
                         boutonP2.Visibility = Visibility.Visible;
+
+                        Canvas.SetTop(boutonB, 74);
+                        Canvas.SetLeft(boutonB, 610);
+                        boutonB.Visibility = Visibility.Visible;
+
+                        Canvas.SetTop(boutonC, 638);
+                        Canvas.SetLeft(boutonC, 410);
+                        boutonC.Visibility = Visibility.Visible;
+
+                        Canvas.SetTop(boutonC2, 638);
+                        Canvas.SetLeft(boutonC2, 610);
+                        boutonC2.Visibility = Visibility.Visible;
 
                         Canvas.SetTop(boutonJ, 424);
                         Canvas.SetLeft(boutonJ, 313);
@@ -361,17 +433,32 @@ namespace Projet
                         Canvas.SetLeft(cube1, 248);
                         cube1.Visibility = Visibility.Visible;
 
-                        Canvas.SetTop(cube2, 84);
-                        Canvas.SetLeft(cube2, 907);
+                        Canvas.SetTop(cube2, 190);
+                        Canvas.SetLeft(cube2, 231);
                         cube2.Visibility = Visibility.Visible;
+
+                        Canvas.SetTop(boule, 648);
+                        Canvas.SetLeft(boule, 842);
+                        boule.Visibility = Visibility.Visible;
                         //mur
-                        Canvas.SetTop(mur, 511);
-                        Canvas.SetLeft(mur, 530);
+                        Canvas.SetLeft(mur, 485);
                         mur.Visibility = Visibility.Visible;
 
-                        Canvas.SetTop(mur2, 333);
+                        Canvas.SetTop(mur2, 300);
                         Canvas.SetLeft(mur2, 0);
                         mur2.Visibility = Visibility.Visible;
+                        //portail
+                        Canvas.SetTop(portail1S1, 205);
+                        Canvas.SetLeft(portail1S1, 410);
+
+                        Canvas.SetTop(portail2S1, 205);
+                        Canvas.SetLeft(portail2S1, 592);
+
+                        Canvas.SetTop(portail1S2, 458);
+                        Canvas.SetLeft(portail1S2, 410);
+
+                        Canvas.SetTop(portail2S2, 458);
+                        Canvas.SetLeft(portail2S2, 592);
                         //tourelle
                         Canvas.SetTop(tourelleH, 10);
                         Canvas.SetLeft(tourelleH, 191);
@@ -381,125 +468,15 @@ namespace Projet
                         Canvas.SetLeft(tourelleV, 983);
                         tourelleV.Visibility = Visibility.Visible;
                         //protection
-                        Canvas.SetTop(protectionH, 144);
+                        Canvas.SetTop(protectionH, 126);
                         Canvas.SetLeft(protectionH, 10);
-                        
+
                         Canvas.SetTop(protectionV, 328);
-                        Canvas.SetLeft(protectionV, 907);
-                        break;
-                    }
-                case "5":
-                    {
-                        //bouton
-                        Canvas.SetTop(boutonP, 176);
-                        Canvas.SetLeft(boutonP, 948);
-
-                        Canvas.SetTop(boutonP1, hauteurmax);
-                        Canvas.SetLeft(boutonP1, largeurmax);
-
-                        Canvas.SetTop(boutonP2, hauteurmax);
-                        Canvas.SetLeft(boutonP2, largeurmax);
-
-                        Canvas.SetTop(boutonB, hauteurmax);
-                        Canvas.SetLeft(boutonB, largeurmax);
-
-                        Canvas.SetTop(boutonC, hauteurmax);
-                        Canvas.SetLeft(boutonC, largeurmax);
-                        //joueur
-                        Canvas.SetTop(joueur, 633);
-                        Canvas.SetLeft(joueur, 20);
-                        //cube/boule
-                        Canvas.SetTop(cube1, 392);
-                        Canvas.SetLeft(cube1, 349);
-
-                        Canvas.SetTop(cube2, hauteurmax);
-                        Canvas.SetLeft(cube2, largeurmax);
-
-                        Canvas.SetTop(boule, hauteurmax);
-                        Canvas.SetLeft(boule, largeurmax);
-                        //mur
-                        Canvas.SetLeft(mur, largeurmax);
-
-                        Canvas.SetTop(mur2, hauteurmax);
-                        Canvas.SetLeft(mur2, largeurmax);
-                        //portail
-                        Canvas.SetTop(portail1, hauteurmax);
-                        Canvas.SetLeft(portail1, largeurmax);
-
-                        Canvas.SetTop(portail2, hauteurmax);
-                        Canvas.SetLeft(portail2, largeurmax);
-
-                        Canvas.SetTop(portail1S1, hauteurmax);
-                        Canvas.SetLeft(portail1S1, largeurmax);
-
-                        Canvas.SetTop(portail2S1, hauteurmax);
-                        Canvas.SetLeft(portail2S1, largeurmax);
-
-                        Canvas.SetTop(portail1S2, hauteurmax);
-                        Canvas.SetLeft(portail1S2, largeurmax);
-
-                        Canvas.SetTop(portail2S2, hauteurmax);
-                        Canvas.SetLeft(portail2S2, largeurmax);
-                        //tourelle
-                        Canvas.SetTop(tourelleH, 69);
-                        Canvas.SetLeft(tourelleV, 191);
-
-                        Canvas.SetTop(tourelleH, 69);
-                        Canvas.SetLeft(tourelleV, 338);
+                        Canvas.SetLeft(protectionV, 937);
                         break;
                     }
                 case "6":
                     {
-                        //bouton
-                        Canvas.SetTop(boutonP, 176);
-                        Canvas.SetLeft(boutonP, 948);
-
-                        Canvas.SetTop(boutonP1, hauteurmax);
-                        Canvas.SetLeft(boutonP1, largeurmax);
-
-                        Canvas.SetTop(boutonP2, hauteurmax);
-                        Canvas.SetLeft(boutonP2, largeurmax);
-
-                        Canvas.SetTop(boutonB, hauteurmax);
-                        Canvas.SetLeft(boutonB, largeurmax);
-
-                        Canvas.SetTop(boutonC, hauteurmax);
-                        Canvas.SetLeft(boutonC, largeurmax);
-                        //joueur
-                        Canvas.SetTop(joueur, 633);
-                        Canvas.SetLeft(joueur, 20);
-                        //cube/boule
-                        Canvas.SetTop(cube1, 392);
-                        Canvas.SetLeft(cube1, 349);
-
-                        Canvas.SetTop(cube2, hauteurmax);
-                        Canvas.SetLeft(cube2, largeurmax);
-
-                        Canvas.SetTop(boule, hauteurmax);
-                        Canvas.SetLeft(boule, largeurmax);
-                        //mur
-                        Canvas.SetLeft(mur, largeurmax);
-
-                        Canvas.SetTop(mur2, hauteurmax);
-                        Canvas.SetLeft(mur2, largeurmax);
-                        //portail
-                        Canvas.SetTop(portail1, hauteurmax);
-                        Canvas.SetLeft(portail1, largeurmax);
-
-                        Canvas.SetTop(portail2, hauteurmax);
-                        Canvas.SetLeft(portail2, largeurmax);
-
-                        Canvas.SetTop(portail1S1, hauteurmax);
-                        Canvas.SetLeft(portail1S1, largeurmax);
-
-                        Canvas.SetTop(portail2S1, hauteurmax);
-                        Canvas.SetLeft(portail2S1, largeurmax);
-
-                        Canvas.SetTop(portail1S2, hauteurmax);
-                        Canvas.SetLeft(portail1S2, largeurmax);
-
-                        Canvas.SetTop(portail2S2, hauteurmax);
-                        Canvas.SetLeft(portail2S2, largeurmax);
                         break;
                     }
             }
@@ -516,6 +493,7 @@ namespace Projet
             boutonP2BoiteCollision = new Rect(Canvas.GetLeft(boutonP2), Canvas.GetTop(boutonP2), boutonP2.Width - 20, boutonP2.Height - 20);
             boutonBBoiteCollision = new Rect(Canvas.GetLeft(boutonB), Canvas.GetTop(boutonB), boutonB.Width - 20, boutonB.Height - 20);
             boutonCBoiteCollision = new Rect(Canvas.GetLeft(boutonC), Canvas.GetTop(boutonC), boutonC.Width - 20, boutonC.Height - 20);
+            boutonC2BoiteCollision = new Rect(Canvas.GetLeft(boutonC2), Canvas.GetTop(boutonC2), boutonC2.Width - 20, boutonC2.Height - 20);
             boutonJBoiteCollision = new Rect(Canvas.GetLeft(boutonJ), Canvas.GetTop(boutonJ), boutonJ.Width - 20, boutonJ.Height - 20);
             porteBoiteCollision = new Rect(Canvas.GetLeft(porte), Canvas.GetTop(porte), porte.Width, porte.Height);
             murBoiteCollision = new Rect(Canvas.GetLeft(mur), Canvas.GetTop(mur), mur.Width, mur.Height);
@@ -539,6 +517,7 @@ namespace Projet
             boutonP2.Visibility = Visibility.Hidden;
             boutonB.Visibility = Visibility.Hidden;
             boutonC.Visibility = Visibility.Hidden;
+            boutonC2.Visibility = Visibility.Hidden;
             boutonJ.Visibility = Visibility.Hidden;
             cube1.Visibility = Visibility.Hidden;
             cube2.Visibility = Visibility.Hidden;
@@ -748,14 +727,14 @@ namespace Projet
 
         private void CollisionCubeBoutonC()
         {
-            if (cubeBoiteCollision.IntersectsWith(boutonCBoiteCollision) && boutonC.Visibility == Visibility.Visible && cube1.Visibility == Visibility.Visible)
+            if (cubeBoiteCollision.IntersectsWith(boutonCBoiteCollision) && boutonC.Visibility == Visibility.Visible && cube1.Visibility == Visibility.Visible || cubeBoiteCollision.IntersectsWith(boutonC2BoiteCollision) && boutonC2.Visibility == Visibility.Visible && cube1.Visibility == Visibility.Visible)
             {
                 cubeSprite.ImageSource = new BitmapImage(new Uri("images/carrer2.png", UriKind.RelativeOrAbsolute));
                 cube1.Fill = cubeSprite;
                 portail1S2.Visibility = Visibility.Visible;
                 portail2S2.Visibility = Visibility.Visible;
             }
-            else if (cubeBoiteCollision2.IntersectsWith(boutonCBoiteCollision) && boutonC.Visibility == Visibility.Visible && cube2.Visibility == Visibility.Visible)
+            else if (cubeBoiteCollision2.IntersectsWith(boutonCBoiteCollision) && boutonC.Visibility == Visibility.Visible && cube2.Visibility == Visibility.Visible || cubeBoiteCollision2.IntersectsWith(boutonC2BoiteCollision) && boutonC2.Visibility == Visibility.Visible && cube2.Visibility == Visibility.Visible)
             {
                 cubeSprite2.ImageSource = new BitmapImage(new Uri("images/carrer2.png", UriKind.RelativeOrAbsolute));
                 cube2.Fill = cubeSprite2;
@@ -900,35 +879,41 @@ namespace Projet
                 Canvas.SetLeft(objet, Canvas.GetLeft(portail1S2) - (portail1.Height));
             }
         }
-        private void CreerBalleH(double x, double y)
+        private void CreerBalleH(object sender, EventArgs e)
         {
-            Rectangle balleH = new Rectangle
+            if (joueurBoiteCollision.IntersectsWith(tourelleHBoiteCollision) && tourelleH.Visibility == Visibility.Visible)
             {
-                Tag = "balleH",
-                Height = 40,
-                Width = 15,
-                Fill = Brushes.Yellow,
-                Stroke = Brushes.Black,
-                StrokeThickness = 5
-            };
-            Canvas.SetLeft(balleH, x);
-            Canvas.SetTop(balleH, y);
-            monCanvas.Children.Add(balleH);
+                Rectangle balleH = new Rectangle
+                {
+                    Tag = "balleH",
+                    Height = 40,
+                    Width = 15,
+                    Fill = Brushes.Yellow,
+                    Stroke = Brushes.Black,
+                    StrokeThickness = 5
+                };
+                Canvas.SetLeft(balleH, Canvas.GetLeft(joueur));
+                Canvas.SetTop(balleH, Canvas.GetTop(tourelleH));
+                monCanvas.Children.Add(balleH);
+            }
         }
-        private void CreerBalleV(double x, double y)
+        private void CreerBalleV(object sender, EventArgs e)
         {
-            Rectangle balleV = new Rectangle
+            if (joueurBoiteCollision.IntersectsWith(tourelleVBoiteCollision) && tourelleV.Visibility == Visibility.Visible)
             {
-                Tag = "balleV",
-                Height = 15,
-                Width = 40,
-                Fill = Brushes.Yellow,
-                Stroke = Brushes.Black,
-                StrokeThickness = 5
-            };
-            Canvas.SetLeft(balleV, x);
-            Canvas.SetTop(balleV, y);
-            monCanvas.Children.Add(balleV);
+                Rectangle balleV = new Rectangle
+                {
+                    Tag = "balleV",
+                    Height = 15,
+                    Width = 40,
+                    Fill = Brushes.Yellow,
+                    Stroke = Brushes.Black,
+                    StrokeThickness = 5
+                };
+                Canvas.SetLeft(balleV, Canvas.GetLeft(tourelleV));
+                Canvas.SetTop(balleV, Canvas.GetTop(joueur));
+                monCanvas.Children.Add(balleV);
+            }
         }
 
         private void BoucleJeux(object sender, EventArgs e)
@@ -957,7 +942,6 @@ namespace Projet
             {//création balle pour la tourelleH
                 tourelleHSprite.ImageSource = new BitmapImage(new Uri("images/tourelle2.png", UriKind.RelativeOrAbsolute));
                 tourelleH.Fill = tourelleHSprite;
-                CreerBalleH(Canvas.GetLeft(joueur) + (joueur.Width/2), Canvas.GetTop(tourelleH));
                 foreach (var x in monCanvas.Children.OfType<Rectangle>())
                 {
                     if (x is Rectangle && (string)x.Tag == "balleH")
@@ -980,7 +964,7 @@ namespace Projet
                     if (x is Rectangle && (string)x.Tag == "balleV")
                     {//si il rest des balles de l'autres tourelle finir leur avancement
                         Canvas.SetLeft(x, Canvas.GetLeft(x) - (VITESSEBALLE));
-                        if (Canvas.GetLeft(x) < 450)
+                        if (Canvas.GetLeft(x) < 450 || Canvas.GetTop(x) > 342)
                         {
                             objetSupprimer.Add(x);
                         }
@@ -1001,7 +985,6 @@ namespace Projet
             {//création balle pour la tourelleV
                 tourelleVSprite.ImageSource = new BitmapImage(new Uri("images/tourelle4.png", UriKind.RelativeOrAbsolute));
                 tourelleV.Fill = tourelleVSprite;
-                CreerBalleV(Canvas.GetLeft(tourelleV) + (joueur.Height / 2), Canvas.GetTop(joueur));
                 foreach (var x in monCanvas.Children.OfType<Rectangle>())
                 {
                     if (x is  Rectangle && (string)x.Tag == "balleV")
