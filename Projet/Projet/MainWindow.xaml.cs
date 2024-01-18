@@ -98,6 +98,9 @@ namespace Projet
             InitializeComponent();
             Menu fenetreMenu = new Menu();
             fenetreMenu.ShowDialog();
+            if (fenetreMenu.DialogResult == false)
+                Application.Current.Shutdown();
+            salle = fenetreMenu.choixSalle;
 
             monCanvas.Focus();
 

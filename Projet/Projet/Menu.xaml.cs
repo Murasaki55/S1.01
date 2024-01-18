@@ -18,10 +18,46 @@ namespace Projet
     /// Logique d'interaction pour Menu.xaml
     /// </summary>
     public partial class Menu : Window
-    {
+    { 
+        public string choixSalle = "0";
         public Menu()
         {
             InitializeComponent();
+        }
+
+        private void jouer_Click(object sender, RoutedEventArgs e)
+        {
+            this.DialogResult = true;
+        }
+
+        private void quitter_Click(object sender, RoutedEventArgs e)
+        {
+            this.DialogResult = false;
+        }
+
+        private void niv1_Click(object sender, RoutedEventArgs e)
+        {
+            choixSalle = "1";
+        }
+
+        private void niv2_Click(object sender, RoutedEventArgs e)
+        {
+            choixSalle = "2";
+        }
+
+        private void niv3_Click(object sender, RoutedEventArgs e)
+        {
+            choixSalle = "3";
+        }
+
+        private void niv4_Click(object sender, RoutedEventArgs e)
+        {
+            choixSalle = "4";
+        }
+
+        private void niv5_Click(object sender, RoutedEventArgs e)
+        {
+            choixSalle = "5";
         }
     }
 }
