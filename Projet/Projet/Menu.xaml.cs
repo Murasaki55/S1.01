@@ -19,7 +19,7 @@ namespace Projet
     /// </summary>
     public partial class Menu : Window
     { 
-        public string choixSalle = "0";
+        public string choixSalle = "";
         public Menu()
         {
             InitializeComponent();
@@ -27,6 +27,7 @@ namespace Projet
 
         private void jouer_Click(object sender, RoutedEventArgs e)
         {
+            this.choixSalle = "0";
             this.DialogResult = true;
         }
 
@@ -35,29 +36,33 @@ namespace Projet
             this.DialogResult = false;
         }
 
+        private void niv0_Click(object sender, RoutedEventArgs e)
+        {
+            this.choixSalle = "0";
+        }
         private void niv1_Click(object sender, RoutedEventArgs e)
         {
-            choixSalle = "1";
+            this.choixSalle = "1";
         }
 
         private void niv2_Click(object sender, RoutedEventArgs e)
         {
-            choixSalle = "2";
+            this.choixSalle = "2";
         }
 
         private void niv3_Click(object sender, RoutedEventArgs e)
         {
-            choixSalle = "3";
+            this.choixSalle = "3";
         }
 
         private void niv4_Click(object sender, RoutedEventArgs e)
         {
-            choixSalle = "4";
+            this.choixSalle = "4";
         }
 
         private void niv5_Click(object sender, RoutedEventArgs e)
         {
-            choixSalle = "5";
+            this.choixSalle = "5";
         }
     }
 }

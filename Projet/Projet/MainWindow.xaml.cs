@@ -85,7 +85,7 @@ namespace Projet
 
         private int tempsBoutonJ = 15;
         private string salle = "0";
-        private bool Gauche, Droite, Haut, Bas, E , P = false;
+        private bool Gauche, Droite, Haut, Bas, E , P, Echap = false;
         private bool ouvert = false;
 
         private List<Rectangle> objetSupprimer = new List<Rectangle>();
@@ -223,6 +223,11 @@ namespace Projet
             if (e.Key == Key.P)
             {
                 P = true;
+            }
+            if (e.Key == Key.Escape)
+            {
+                Pause fenetrePause = new Pause();
+                fenetrePause.ShowDialog();
             }
 
         }
@@ -1026,7 +1031,6 @@ namespace Projet
                 monCanvas.Children.Add(balleV);
             }
         }
-
         private void BoucleJeux(object sender, EventArgs e)
         {
             //création BoiteCollision
