@@ -10,31 +10,43 @@
     Height="753"
     WindowStartupLocation="CenterScreen"
     mc:Ignorable="d">
-    <Canvas Name="monCanvas" Focusable="True" KeyDown="Canvas_KeyDown" KeyUp="Canvas_KeyUp" Background="LightBlue">
+    <Canvas Name="monCanvas" Focusable="True" KeyDown="Canvas_KeyDown" KeyUp="Canvas_KeyUp" Background="Black">
         <Rectangle Name="sol" Height="834" Width="1204" Fill="Orange" HorizontalAlignment="Left" VerticalAlignment="Center" Canvas.Top="-32" Canvas.Left="-54"/>
         <Rectangle Name="boutonP" Height="70" Width="70" Fill="Green" Canvas.Top="198" Canvas.Left="812" HorizontalAlignment="Left" VerticalAlignment="Top" Visibility="Hidden" />
-        <Rectangle Name="boutonP1" Height="70" Width="70" Fill="Green" Canvas.Top="163" Canvas.Left="937" HorizontalAlignment="Left" VerticalAlignment="Top" />
-        <Rectangle Name="boutonP2" Height="70" Width="70" Fill="Green" Canvas.Top="223" HorizontalAlignment="Left" VerticalAlignment="Center" Canvas.Left="10" />
-        <Rectangle Name="boutonB" Height="70" Width="70" Fill="Purple" Canvas.Top="74" Canvas.Left="610" HorizontalAlignment="Left" VerticalAlignment="Top" />
-        <Rectangle Name="boutonC" Height="70" Width="70" Fill="Purple" Canvas.Top="638" Canvas.Left="410" HorizontalAlignment="Center" VerticalAlignment="Top" />
-        <Rectangle Name="boutonC2" Height="70" Width="70" Fill="Purple" Canvas.Top="638" Canvas.Left="610" HorizontalAlignment="Center" VerticalAlignment="Top" />
-        <Rectangle Name="boutonJ" Height="70" Width="70" Fill="OrangeRed" Canvas.Top="412" Canvas.Left="171" HorizontalAlignment="Left" VerticalAlignment="Top" />
-        <Rectangle Name="porte" Height="90" Width="90" Fill="Blue" Canvas.Top="29" Canvas.Left="704" HorizontalAlignment="Left" VerticalAlignment="Center" />
-        <Rectangle Name="cube1" Height="60" Width="60" Fill="Red" Canvas.Top="608" Canvas.Left="248" HorizontalAlignment="Left" VerticalAlignment="Top" />
-        <Rectangle Name="boule" Height="60" Width="60" Fill="DarkRed" Canvas.Top="648" Canvas.Left="842" HorizontalAlignment="Center" VerticalAlignment="Top" />
-        <Rectangle Name="cube2" Height="60" Width="60" Fill="Red" Canvas.Top="190" Canvas.Left="231" HorizontalAlignment="Left" VerticalAlignment="Top" />
+        <Rectangle Name="boutonP1" Height="70" Width="70" Fill="Green" Canvas.Top="163" Canvas.Left="937" HorizontalAlignment="Left" VerticalAlignment="Top" Visibility="Hidden" />
+        <Rectangle Name="boutonP2" Height="70" Width="70" Fill="Green" Canvas.Top="223" HorizontalAlignment="Left" VerticalAlignment="Center" Canvas.Left="10" Visibility="Hidden" />
+        <Rectangle Name="boutonB" Height="70" Width="70" Fill="Purple" Canvas.Top="74" Canvas.Left="610" HorizontalAlignment="Left" VerticalAlignment="Top" Visibility="Hidden" />
+        <Rectangle Name="boutonC" Height="70" Width="70" Fill="Purple" Canvas.Top="638" Canvas.Left="410" HorizontalAlignment="Center" VerticalAlignment="Top" Visibility="Hidden" />
+        <Rectangle Name="boutonC2" Height="70" Width="70" Fill="Purple" Canvas.Top="638" Canvas.Left="610" HorizontalAlignment="Center" VerticalAlignment="Top" Visibility="Hidden" />
+        <Rectangle Name="boutonJ" Height="70" Width="70" Fill="OrangeRed" Canvas.Top="412" Canvas.Left="171" HorizontalAlignment="Left" VerticalAlignment="Top" Visibility="Hidden" />
+        <Rectangle Name="porte" Height="90" Width="90" Fill="Blue" Canvas.Top="10" Canvas.Left="772" HorizontalAlignment="Left" VerticalAlignment="Center" />
+        <Rectangle Name="portefin" Height="90" Width="90" Fill="Blue" Canvas.Top="10" Canvas.Left="772" HorizontalAlignment="Left" VerticalAlignment="Center" Visibility="Hidden" />
+        <Rectangle Name="megaPorte" Height="725" Width="726" Fill="DarkBlue" Canvas.Left="185" HorizontalAlignment="Left" VerticalAlignment="Center" Visibility="Hidden" />
+        <Rectangle Name="cube1" Height="60" Width="60" Fill="Red" Canvas.Top="608" Canvas.Left="248" HorizontalAlignment="Left" VerticalAlignment="Top" Visibility="Hidden" />
+        <Rectangle Name="boule" Height="60" Width="60" Fill="DarkRed" Canvas.Top="648" Canvas.Left="842" HorizontalAlignment="Center" VerticalAlignment="Top" Visibility="Hidden" />
+        <Rectangle Name="cube2" Height="60" Width="60" Fill="Red" Canvas.Top="190" Canvas.Left="231" HorizontalAlignment="Left" VerticalAlignment="Top" Visibility="Hidden" />
         <Rectangle Name="portail1" Height="90" Width="85" Fill="Pink" Canvas.Top="223" Canvas.Left="408" HorizontalAlignment="Left" VerticalAlignment="Top" Visibility="Hidden" />
         <Rectangle Name="portail2" Height="90" Width="85" Fill="Pink" Canvas.Top="223" Canvas.Left="592" HorizontalAlignment="Center" VerticalAlignment="Top" Visibility="Hidden" />
-        <Rectangle Name="portail1S1" Height="90" Width="85" Fill="Pink" Canvas.Top="205" Canvas.Left="410" HorizontalAlignment="Left" VerticalAlignment="Top" />
-        <Rectangle Name="portail2S1" Height="90" Width="85" Fill="Pink" Canvas.Top="205" Canvas.Left="592" HorizontalAlignment="Center" VerticalAlignment="Top" />
-        <Rectangle Name="portail1S2" Height="90" Width="85" Fill="Pink" Canvas.Top="458" Canvas.Left="410" HorizontalAlignment="Left" VerticalAlignment="Top" />
-        <Rectangle Name="portail2S2" Height="90" Width="85" Fill="Pink" Canvas.Top="458" Canvas.Left="592" HorizontalAlignment="Left" VerticalAlignment="Center" />
-        <Rectangle Name="mur" Height="753" Width="120" Fill="DarkGray" Canvas.Left="485" HorizontalAlignment="Center" VerticalAlignment="Top" Canvas.Top="-8" />
-        <Rectangle Name="mur2" Height="86" Width="497" Fill="DarkGray" Canvas.Top="300" HorizontalAlignment="Center" VerticalAlignment="Top" />
-        <Rectangle Name="protectionH" Height="18" Width="474" Fill="Cyan" Canvas.Top="126" Canvas.Left="10" HorizontalAlignment="Center" VerticalAlignment="Top" />
-        <Rectangle Name="protectionV" Height="410" Width="18" Fill="Cyan" Canvas.Top="327" Canvas.Left="937" HorizontalAlignment="Left" VerticalAlignment="Top" />
-        <Rectangle Name="tourelleH" Height="100" Width="100" Fill="White" Canvas.Top="10" Canvas.Left="191" HorizontalAlignment="Center" VerticalAlignment="Top" />
-        <Rectangle Name="tourelleV" Height="100" Width="100" Fill="White" Canvas.Top="491" Canvas.Left="983" HorizontalAlignment="Center" VerticalAlignment="Top" />
+        <Rectangle Name="portail1S1" Height="90" Width="85" Fill="Pink" Canvas.Top="205" Canvas.Left="410" HorizontalAlignment="Left" VerticalAlignment="Top" Visibility="Hidden" />
+        <Rectangle Name="portail2S1" Height="90" Width="85" Fill="Pink" Canvas.Top="205" Canvas.Left="592" HorizontalAlignment="Center" VerticalAlignment="Top" Visibility="Hidden" />
+        <Rectangle Name="portail1S2" Height="90" Width="85" Fill="Pink" Canvas.Top="458" Canvas.Left="410" HorizontalAlignment="Left" VerticalAlignment="Top" Visibility="Hidden" />
+        <Rectangle Name="portail2S2" Height="90" Width="85" Fill="Pink" Canvas.Top="458" Canvas.Left="592" HorizontalAlignment="Left" VerticalAlignment="Center" Visibility="Hidden" />
+        <Rectangle Name="fleche" Height="16" Width="6" Fill="Red" Canvas.Top="372" Canvas.Left="42" HorizontalAlignment="Center" VerticalAlignment="Top" Visibility="Hidden" />
+        <Rectangle Name="mur" Height="753" Width="120" Fill="DarkGray" Canvas.Left="485" HorizontalAlignment="Center" VerticalAlignment="Top" Canvas.Top="-8" Visibility="Hidden" />
+        <Rectangle Name="mur2" Height="86" Width="497" Fill="DarkGray" Canvas.Top="300" HorizontalAlignment="Center" VerticalAlignment="Top" Visibility="Hidden" />
+        <Rectangle Name="protectionH" Height="18" Width="474" Fill="Cyan" Canvas.Top="126" Canvas.Left="10" HorizontalAlignment="Center" VerticalAlignment="Top" Visibility="Hidden" />
+        <Rectangle Name="protectionV" Height="410" Width="18" Fill="Cyan" Canvas.Top="327" Canvas.Left="937" HorizontalAlignment="Left" VerticalAlignment="Top" Visibility="Hidden" />
+        <Rectangle Name="tourelleH" Height="100" Width="100" Fill="White" Canvas.Top="10" Canvas.Left="191" HorizontalAlignment="Center" VerticalAlignment="Top" Visibility="Hidden" />
+        <Rectangle Name="tourelleV" Height="100" Width="100" Fill="White" Canvas.Top="491" Canvas.Left="983" HorizontalAlignment="Center" VerticalAlignment="Top" Visibility="Hidden" />
+        <Rectangle Name="sortie" Height="24" Width="70" Fill="Yellow" Canvas.Top="363" Canvas.Left="10" HorizontalAlignment="Center" VerticalAlignment="Top" Visibility="Hidden" />
+        <Rectangle Name="f1" Height="70" Width="70" Fill="Red" Canvas.Top="462" Canvas.Left="513" HorizontalAlignment="Left" VerticalAlignment="Top" Visibility="Hidden" />
+        <Rectangle Name="f2" Height="70" Width="70" Fill="Red" Canvas.Top="128" Canvas.Left="902" HorizontalAlignment="Left" VerticalAlignment="Top" Visibility="Hidden" />
+        <Rectangle Name="f3" Height="70" Width="70" Fill="Red" Canvas.Top="39" Canvas.Left="515" HorizontalAlignment="Left" VerticalAlignment="Center" Visibility="Hidden" />
+        <Rectangle Name="f4" Height="70" Width="70" Fill="Red" Canvas.Top="125" Canvas.Left="136" HorizontalAlignment="Center" VerticalAlignment="Center" Visibility="Hidden" />
+        <Rectangle Name="f5" Height="70" Width="70" Fill="Red" Canvas.Top="220" Canvas.Left="416" HorizontalAlignment="Left" VerticalAlignment="Top" Visibility="Hidden" />
+        <Rectangle Name="f6" Height="70" Width="70" Fill="Red" Canvas.Top="220" Canvas.Left="610" HorizontalAlignment="Left" VerticalAlignment="Top" Visibility="Hidden" />
+        <Rectangle Name="f7" Height="70" Width="70" Fill="Red" Canvas.Top="40" Canvas.Left="610" HorizontalAlignment="Left" VerticalAlignment="Top" Visibility="Hidden" />
+        <Rectangle Name="f8" Height="70" Width="70" Fill="Red" Canvas.Top="39" Canvas.Left="423" HorizontalAlignment="Left" VerticalAlignment="Top" Visibility="Hidden" />
         <Rectangle Name="joueur" Height="70" Width="65" Fill="Brown" Canvas.Top="633" Canvas.Left="20" HorizontalAlignment="Left" VerticalAlignment="Top" />
         <Label Name="NumSalle" FontSize="22" FontWeight="Bold" Content="Salle: 0/5" />
     </Canvas>

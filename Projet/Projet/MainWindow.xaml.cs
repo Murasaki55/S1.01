@@ -50,6 +50,8 @@ namespace Projet
         private Rect tourelleVBoiteCollision;
         private Rect protectionHBoiteCollision;
         private Rect protectionVBoiteCollision;
+        private Rect sortieBoiteCollision;
+        private Rect portefinBoiteCollision;
 
         private ImageBrush joueurSprite = new ImageBrush();
         private ImageBrush solSprite = new ImageBrush();
@@ -61,18 +63,28 @@ namespace Projet
         private ImageBrush boutonCSprite = new ImageBrush();
         private ImageBrush boutonJSprite = new ImageBrush();
         private ImageBrush porteSprite = new ImageBrush();
+        private ImageBrush megaPorteSprite = new ImageBrush();
         private ImageBrush murSprite = new ImageBrush();
         private ImageBrush portail1Sprite = new ImageBrush();
         private ImageBrush portail2Sprite = new ImageBrush();
         private ImageBrush tourelleHSprite = new ImageBrush();
         private ImageBrush tourelleVSprite = new ImageBrush();
+        private ImageBrush portefinSprite = new ImageBrush();
+        private ImageBrush f1Sprite = new ImageBrush();
+        private ImageBrush f2Sprite = new ImageBrush();
+        private ImageBrush f3Sprite = new ImageBrush();
+        private ImageBrush f4Sprite = new ImageBrush();
+        private ImageBrush f5Sprite = new ImageBrush();
+        private ImageBrush f6Sprite = new ImageBrush();
+        private ImageBrush f7Sprite = new ImageBrush();
+        private ImageBrush f8Sprite = new ImageBrush();
 
         private readonly int VITESSE = 10;
         private readonly int VITESSECUBE = 11;
         private readonly int VITESSEBALLE = 20;
 
         private int tempsBoutonJ = 15;
-        private string salle = "5";
+        private string salle = "7";
         private bool Gauche, Droite, Haut, Bas, E = false;
         private bool ouvert = false;
 
@@ -123,6 +135,10 @@ namespace Projet
 
             porteSprite.ImageSource = new BitmapImage(new Uri("images/porte1.png", UriKind.RelativeOrAbsolute));
             porte.Fill = porteSprite;
+            portefinSprite.ImageSource = new BitmapImage(new Uri("images/porte2.png", UriKind.RelativeOrAbsolute));
+            portefin.Fill = portefinSprite;
+            megaPorteSprite.ImageSource = new BitmapImage(new Uri("images/megaPorte1.png", UriKind.RelativeOrAbsolute));
+            megaPorte.Fill = megaPorteSprite;
 
             boutonSprite.ImageSource = new BitmapImage(new Uri("images/Bouton.png", UriKind.RelativeOrAbsolute));
             boutonP.Fill = boutonSprite;
@@ -157,6 +173,23 @@ namespace Projet
             tourelleH.Fill = tourelleHSprite;
             tourelleVSprite.ImageSource = new BitmapImage(new Uri("images/tourelle3.png", UriKind.RelativeOrAbsolute));
             tourelleV.Fill = tourelleVSprite;
+
+            f1Sprite.ImageSource = new BitmapImage(new Uri("images/flèche1.png", UriKind.RelativeOrAbsolute));
+            f1.Fill = f1Sprite;
+            f2Sprite.ImageSource = new BitmapImage(new Uri("images/flèche2.png", UriKind.RelativeOrAbsolute));
+            f2.Fill = f2Sprite;
+            f3Sprite.ImageSource = new BitmapImage(new Uri("images/flèche3.png", UriKind.RelativeOrAbsolute));
+            f3.Fill = f3Sprite;
+            f4Sprite.ImageSource = new BitmapImage(new Uri("images/flèche4.png", UriKind.RelativeOrAbsolute));
+            f4.Fill = f4Sprite;
+            f5Sprite.ImageSource = new BitmapImage(new Uri("images/flèche5.png", UriKind.RelativeOrAbsolute));
+            f5.Fill = f5Sprite;
+            f6Sprite.ImageSource = new BitmapImage(new Uri("images/flèche6.png", UriKind.RelativeOrAbsolute));
+            f6.Fill = f6Sprite;
+            f7Sprite.ImageSource = new BitmapImage(new Uri("images/flèche7.png", UriKind.RelativeOrAbsolute));
+            f7.Fill = f7Sprite;
+            f8Sprite.ImageSource = new BitmapImage(new Uri("images/flèche8.png", UriKind.RelativeOrAbsolute));
+            f8.Fill = f8Sprite;
 
             NumSalle.Content = "Salle : " + salle + "/5";
             Creation_Niveaux();
@@ -473,10 +506,35 @@ namespace Projet
 
                         Canvas.SetTop(protectionV, 328);
                         Canvas.SetLeft(protectionV, 937);
+                        //???
+                        fleche.Visibility = Visibility.Visible;
                         break;
                     }
                 case "6":
                     {
+                        porte.Visibility = Visibility.Hidden;
+                        megaPorte.Visibility = Visibility.Visible;
+                        //joueur
+                        Canvas.SetTop(joueur, 633);
+                        Canvas.SetLeft(joueur, 516);
+                        break;
+                    }
+                case "7":
+                    {
+                        Canvas.SetTop(portefin, 130);
+                        Canvas.SetLeft(portefin, 505);
+                        portefin.Visibility = Visibility.Visible;
+                        porte.Visibility = Visibility.Hidden;
+                        Canvas.SetTop(joueur, 633);
+                        Canvas.SetLeft(joueur, 516);
+                        f1.Visibility = Visibility.Visible;
+                        f2.Visibility = Visibility.Visible;
+                        f3.Visibility = Visibility.Visible;
+                        f4.Visibility = Visibility.Visible;
+                        f5.Visibility = Visibility.Visible;
+                        f6.Visibility = Visibility.Visible;
+                        f7.Visibility = Visibility.Visible;
+                        f8.Visibility = Visibility.Visible;
                         break;
                     }
             }
@@ -496,6 +554,7 @@ namespace Projet
             boutonC2BoiteCollision = new Rect(Canvas.GetLeft(boutonC2), Canvas.GetTop(boutonC2), boutonC2.Width - 20, boutonC2.Height - 20);
             boutonJBoiteCollision = new Rect(Canvas.GetLeft(boutonJ), Canvas.GetTop(boutonJ), boutonJ.Width - 20, boutonJ.Height - 20);
             porteBoiteCollision = new Rect(Canvas.GetLeft(porte), Canvas.GetTop(porte), porte.Width, porte.Height);
+            portefinBoiteCollision = new Rect(Canvas.GetLeft(portefin), Canvas.GetTop(portefin), portefin.Width, portefin.Height);
             murBoiteCollision = new Rect(Canvas.GetLeft(mur), Canvas.GetTop(mur), mur.Width, mur.Height);
             murBoiteCollision2 = new Rect(Canvas.GetLeft(mur2), Canvas.GetTop(mur2), mur2.Width, mur2.Height);
             portail1BoiteCollision = new Rect(Canvas.GetLeft(portail1), Canvas.GetTop(portail1), portail1.Width - 40, portail1.Height - 40);
@@ -508,6 +567,7 @@ namespace Projet
             tourelleVBoiteCollision = new Rect(Canvas.GetLeft(tourelleV) - (500), Canvas.GetTop(tourelleV) - (100), tourelleV.Width + 500, tourelleV.Height + 300);
             protectionHBoiteCollision = new Rect(Canvas.GetLeft(protectionH), Canvas.GetTop(protectionH), protectionH.Width, protectionH.Height);
             protectionVBoiteCollision = new Rect(Canvas.GetLeft(protectionV), Canvas.GetTop(protectionV), protectionV.Width, protectionV.Height);
+            sortieBoiteCollision = new Rect(Canvas.GetLeft(sortie), Canvas.GetTop(sortie), sortie.Width, sortie.Height);
         }
 
         private void CacherObjet()
@@ -534,8 +594,43 @@ namespace Projet
             tourelleV.Visibility = Visibility.Hidden;
             protectionH.Visibility = Visibility.Hidden;
             protectionV.Visibility = Visibility.Hidden;
+            megaPorte.Visibility = Visibility.Hidden;
+            fleche.Visibility = Visibility.Hidden;
+            f1.Visibility = Visibility.Hidden;
+            f2.Visibility = Visibility.Hidden;
+            f3.Visibility = Visibility.Hidden;
+            f4.Visibility = Visibility.Hidden;
+            f5.Visibility = Visibility.Hidden;
+            f6.Visibility = Visibility.Hidden;
+            f7.Visibility = Visibility.Hidden;
+            f8.Visibility = Visibility.Hidden;
         }
-
+        private void Sortie()
+        {
+            if (joueurBoiteCollision.IntersectsWith(sortieBoiteCollision) && salle == "5")
+            {
+                salle = "7";
+                NumSalle.Content = "???";
+                CacherObjet();
+                Creation_Niveaux();
+            }
+        }
+        private void Ou()
+        {
+            if (salle == "7")
+            {
+                ouvert = true;
+                porteSprite.ImageSource = new BitmapImage(new Uri("images/porte2.png", UriKind.RelativeOrAbsolute));
+                porte.Fill = porteSprite;
+            }
+            if (joueurBoiteCollision.IntersectsWith(portefinBoiteCollision))
+            {
+                joueur.Visibility = Visibility.Hidden;
+                portefin.Visibility = Visibility.Hidden;
+                sol.Visibility = Visibility.Hidden;
+                CacherObjet();
+            }
+        }
         private void CubeBouleCollision(Rectangle cube, Rect BoiteCollision)
         {
             if (Gauche && Canvas.GetLeft(joueur) > 50)
@@ -835,15 +930,7 @@ namespace Projet
                     case "5":
                         {
                             salle = "6";
-                            NumSalle.Content = "Salle : " + salle + "/5";
-                            ouvert = false;
-                            CacherObjet();
-                            break;
-                        }
-                    case "6":
-                        {
-                            salle = "7";
-                            NumSalle.Content = "End";
+                            NumSalle.Content = "Fin";
                             ouvert = false;
                             CacherObjet();
                             break;
@@ -923,6 +1010,7 @@ namespace Projet
 
             //collision joueur cube
             JoueurMouvement();
+            Sortie();
 
             //collision joueur boutonP / cube boutonP
             CollisionBoutonPorte();
@@ -1072,6 +1160,8 @@ namespace Projet
             {//supression des balles dans la liste de supression
                 monCanvas.Children.Remove(y);
             }
+
+            Ou();
         }
     }
 }
