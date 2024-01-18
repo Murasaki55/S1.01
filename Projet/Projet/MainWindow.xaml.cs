@@ -84,7 +84,7 @@ namespace Projet
         private readonly int VITESSEBALLE = 20;
 
         private int tempsBoutonJ = 15;
-        private string salle = "7";
+        private string salle = "0";
         private bool Gauche, Droite, Haut, Bas, E = false;
         private bool ouvert = false;
 
