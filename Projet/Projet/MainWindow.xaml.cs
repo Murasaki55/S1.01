@@ -85,7 +85,7 @@ namespace Projet
 
         private int tempsBoutonJ = 15;
         private string salle = "0";
-        private bool Gauche, Droite, Haut, Bas, E = false;
+        private bool Gauche, Droite, Haut, Bas, E , P = false;
         private bool ouvert = false;
 
         private List<Rectangle> objetSupprimer = new List<Rectangle>();
@@ -217,6 +217,10 @@ namespace Projet
             {
                 E = true;
             }
+            if (e.Key == Key.P)
+            {
+                P = true;
+            }
 
         }
 
@@ -241,6 +245,10 @@ namespace Projet
             if (e.Key == Key.E)
             {
                 E = false;
+            }
+            if (e.Key == Key.P)
+            {
+                P = false;
             }
         }
 
@@ -475,6 +483,7 @@ namespace Projet
                         boule.Visibility = Visibility.Visible;
                         //mur
                         Canvas.SetLeft(mur, 485);
+                        Canvas.SetTop(mur, 0);
                         mur.Visibility = Visibility.Visible;
 
                         Canvas.SetTop(mur2, 300);
@@ -615,15 +624,27 @@ namespace Projet
                 Creation_Niveaux();
             }
         }
+        private void Triche()
+        {
+            if (P)
+            {
+                if (boutonP.Visibility == Visibility.Visible)
+                {
+                    Canvas.SetTop(cube1,Canvas.GetTop(boutonP));
+                    Canvas.SetLeft(cube1, Canvas.GetLeft(boutonP));
+                }
+                else if (boutonP1.Visibility == Visibility.Visible && boutonP2.Visibility == Visibility.Visible)
+                {
+                    Canvas.SetTop(cube1, Canvas.GetTop(boutonP1));
+                    Canvas.SetLeft(cube1, Canvas.GetLeft(boutonP1));
+                    Canvas.SetTop(cube2, Canvas.GetTop(boutonP2));
+                    Canvas.SetLeft(cube2, Canvas.GetLeft(boutonP2));
+                }
+            }
+        }
         private void Ou()
         {
-            if (salle == "7")
-            {
-                ouvert = true;
-                porteSprite.ImageSource = new BitmapImage(new Uri("images/porte2.png", UriKind.RelativeOrAbsolute));
-                porte.Fill = porteSprite;
-            }
-            if (joueurBoiteCollision.IntersectsWith(portefinBoiteCollision))
+            if (joueurBoiteCollision.IntersectsWith(portefinBoiteCollision) && portefin.Visibility == Visibility.Visible)
             {
                 joueur.Visibility = Visibility.Hidden;
                 portefin.Visibility = Visibility.Hidden;
@@ -864,7 +885,7 @@ namespace Projet
         }
         private void CollisionBoutonJ(object sender, EventArgs e)
         {
-            if (joueurBoiteCollision.IntersectsWith(boutonJBoiteCollision))
+            if (joueurBoiteCollision.IntersectsWith(boutonJBoiteCollision) && boutonJ.Visibility == Visibility.Visible)
             {
                 tempsBoutonJ = 15;
                 protectionH.Visibility = Visibility.Visible;
@@ -1162,6 +1183,7 @@ namespace Projet
             }
 
             Ou();
+            Triche();
         }
     }
 }
