@@ -13,7 +13,7 @@
             <Button x:Name="niv3" Background="Black" BorderThickness="5" BorderBrush="White" Content="3" Height="40" Width="40" TextBlock.TextAlignment="Center" Canvas.Left="420" Canvas.Top="192" Foreground="White" Click="niv3_Click"/>
             <Button x:Name="niv4" Background="Black" BorderThickness="5" BorderBrush="White" Content="4" Height="40" Width="40" TextBlock.TextAlignment="Center" Canvas.Left="500" Canvas.Top="192" Foreground="White" Click="niv4_Click"/>
             <Button x:Name="niv5" Background="Black" BorderThickness="5" BorderBrush="White" Content="5" Height="40" Width="40" TextBlock.TextAlignment="Center" Canvas.Left="580" Canvas.Top="192" Foreground="White" Click="niv5_Click"/>
-            <Label x:Name ="menu" Width="142" HorizontalAlignment="Left" FontSize="46"  Content="MENU" Canvas.Left="329" Canvas.Top="55" Foreground="White"/>
+            <Label x:Name ="menu" Width="300" HorizontalAlignment="Left" FontSize="46"  Content="Aperture Pixel" Canvas.Left="250" Canvas.Top="55" Foreground="White" VerticalAlignment="Center"/>
             <Button x:Name="niv0" Background="Black" BorderThickness="5" BorderBrush="White" Content="0" Height="40" Width="40" TextBlock.TextAlignment="Center" Canvas.Left="180" Canvas.Top="192" Foreground="White"/>
             <Button x:Name="quitter" Background="Black" BorderThickness="5" BorderBrush="White" Content="Quitter" Height="40" Width="160" TextBlock.TextAlignment="Center" Canvas.Left= "420" Canvas.Top="300" Foreground="White" Click="quitter_Click"/>
             <Button x:Name="jouer" Background="Black" BorderThickness="5" BorderBrush="White" Content="Jouer" Height="40" Width="160" TextBlock.TextAlignment="Center" Canvas.Left= "220" Canvas.Top="300" Foreground="White" Click="jouer_Click"/>
