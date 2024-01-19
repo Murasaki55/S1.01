@@ -84,8 +84,8 @@ namespace Projet
         private readonly int VITESSEBALLE = 20;
 
         private int tempsBoutonJ = 15;
-        private string salle = "0";
-        private bool Gauche, Droite, Haut, Bas, E , P, Echap = false;
+        private string salle = "";
+        private bool Gauche, Droite, Haut, Bas, E, P, Echap = false;
         private bool ouvert = false;
 
         private List<Rectangle> objetSupprimer = new List<Rectangle>();
@@ -93,14 +93,13 @@ namespace Projet
         private DispatcherTimer minutrieBoutonJ;
         private DispatcherTimer minutrietireH;
         private DispatcherTimer minutrietireV;
+
+        Pause fenetrePause;
+        Menu fenetreMenu;
         public MainWindow()
         {
             InitializeComponent();
-            Menu fenetreMenu = new Menu();
-            fenetreMenu.ShowDialog();
-            if (fenetreMenu.DialogResult == false)
-                Application.Current.Shutdown();
-            salle = fenetreMenu.choixSalle;
+            Menu();
 
             monCanvas.Focus();
 
@@ -226,10 +225,26 @@ namespace Projet
             }
             if (e.Key == Key.Escape)
             {
-                Pause fenetrePause = new Pause();
+                fenetrePause = new Pause();
                 fenetrePause.ShowDialog();
+                if (fenetrePause.DialogResult == true)
+                {
+                    Menu();
+                    CacherObjet();
+                    Creation_Niveaux();
+                    NumSalle.Content = "Salle : " + salle + "/5";
+                }
             }
 
+        }
+
+        private void Menu()
+        {
+            fenetreMenu = new Menu();
+            fenetreMenu.ShowDialog();
+            if (fenetreMenu.DialogResult == false)
+                Application.Current.Shutdown();
+            salle = fenetreMenu.choixSalle;
         }
 
         private void Canvas_KeyUp(object sender, KeyEventArgs e)
@@ -349,6 +364,7 @@ namespace Projet
                         boule.Visibility = Visibility.Visible;
                         //mur
                         Canvas.SetLeft(mur, 480);
+                        Canvas.SetTop(mur, 0);
                         mur.Visibility = Visibility.Visible;
 
                         Canvas.SetTop(mur2, 334);
@@ -580,7 +596,7 @@ namespace Projet
             portail2S1BoiteCollision = new Rect(Canvas.GetLeft(portail2S1), Canvas.GetTop(portail2S1), portail2S1.Width - 40, portail2S1.Height - 40);
             portail1S2BoiteCollision = new Rect(Canvas.GetLeft(portail1S2), Canvas.GetTop(portail1S2), portail1S2.Width - 40, portail1S2.Height - 40);
             portail2S2BoiteCollision = new Rect(Canvas.GetLeft(portail2S2), Canvas.GetTop(portail2S2), portail2S2.Width - 40, portail2S2.Height - 40);
-            tourelleHBoiteCollision = new Rect(Canvas.GetLeft(tourelleH)-(150), Canvas.GetTop(tourelleH)+150, tourelleH.Width + 300, tourelleH.Height + 300);
+            tourelleHBoiteCollision = new Rect(Canvas.GetLeft(tourelleH) - (150), Canvas.GetTop(tourelleH) + 150, tourelleH.Width + 300, tourelleH.Height + 300);
             tourelleVBoiteCollision = new Rect(Canvas.GetLeft(tourelleV) - (500), Canvas.GetTop(tourelleV) - (100), tourelleV.Width + 500, tourelleV.Height + 300);
             protectionHBoiteCollision = new Rect(Canvas.GetLeft(protectionH), Canvas.GetTop(protectionH), protectionH.Width, protectionH.Height);
             protectionVBoiteCollision = new Rect(Canvas.GetLeft(protectionV), Canvas.GetTop(protectionV), protectionV.Width, protectionV.Height);
@@ -638,7 +654,7 @@ namespace Projet
             {
                 if (boutonP.Visibility == Visibility.Visible)
                 {
-                    Canvas.SetTop(cube1,Canvas.GetTop(boutonP));
+                    Canvas.SetTop(cube1, Canvas.GetTop(boutonP));
                     Canvas.SetLeft(cube1, Canvas.GetLeft(boutonP));
                 }
                 else if (boutonP1.Visibility == Visibility.Visible && boutonP2.Visibility == Visibility.Visible)
@@ -682,7 +698,7 @@ namespace Projet
             }
             else if (Haut && Canvas.GetTop(joueur) > 50)
             {
-                Canvas.SetTop(cube, Canvas.GetTop(cube) - ( VITESSECUBE));
+                Canvas.SetTop(cube, Canvas.GetTop(cube) - (VITESSECUBE));
 
                 if (BoiteCollision.IntersectsWith(murBoiteCollision2) && mur2.Visibility == Visibility.Visible)
                 {
@@ -1103,7 +1119,7 @@ namespace Projet
                 tourelleV.Fill = tourelleVSprite;
                 foreach (var x in monCanvas.Children.OfType<Rectangle>())
                 {
-                    if (x is  Rectangle && (string)x.Tag == "balleV")
+                    if (x is Rectangle && (string)x.Tag == "balleV")
                     {//balle avance
                         Canvas.SetLeft(x, Canvas.GetLeft(x) - (VITESSEBALLE));
                         if (Canvas.GetLeft(x) < 450)

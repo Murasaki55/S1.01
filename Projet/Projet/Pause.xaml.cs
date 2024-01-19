@@ -26,9 +26,8 @@ namespace Projet
 
         private void quitter_Click(object sender, RoutedEventArgs e)
         {
+            this.DialogResult = true;
             this.Close();
-            Menu fenetreMenu = new Menu();
-            fenetreMenu.ShowDialog();
         }
 
         private void reprendre_Click(object sender, RoutedEventArgs e)

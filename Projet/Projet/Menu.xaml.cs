@@ -18,8 +18,8 @@ namespace Projet
     /// Logique d'interaction pour Menu.xaml
     /// </summary>
     public partial class Menu : Window
-    { 
-        public string choixSalle = "";
+    {
+        public string choixSalle = "0";
         public Menu()
         {
             InitializeComponent();
@@ -27,8 +27,8 @@ namespace Projet
 
         private void jouer_Click(object sender, RoutedEventArgs e)
         {
-            this.choixSalle = "0";
             this.DialogResult = true;
+
         }
 
         private void quitter_Click(object sender, RoutedEventArgs e)
