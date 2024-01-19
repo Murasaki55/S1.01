@@ -648,24 +648,7 @@ namespace Projet
                 Creation_Niveaux();
             }
         }
-        private void Triche()
-        {
-            if (P)
-            {
-                if (boutonP.Visibility == Visibility.Visible)
-                {
-                    Canvas.SetTop(cube1, Canvas.GetTop(boutonP));
-                    Canvas.SetLeft(cube1, Canvas.GetLeft(boutonP));
-                }
-                else if (boutonP1.Visibility == Visibility.Visible && boutonP2.Visibility == Visibility.Visible)
-                {
-                    Canvas.SetTop(cube1, Canvas.GetTop(boutonP1));
-                    Canvas.SetLeft(cube1, Canvas.GetLeft(boutonP1));
-                    Canvas.SetTop(cube2, Canvas.GetTop(boutonP2));
-                    Canvas.SetLeft(cube2, Canvas.GetLeft(boutonP2));
-                }
-            }
-        }
+        
         private void Ou()
         {
             if (joueurBoiteCollision.IntersectsWith(portefinBoiteCollision) && portefin.Visibility == Visibility.Visible)
@@ -1045,6 +1028,38 @@ namespace Projet
                 Canvas.SetLeft(balleV, Canvas.GetLeft(tourelleV));
                 Canvas.SetTop(balleV, Canvas.GetTop(joueur));
                 monCanvas.Children.Add(balleV);
+            }
+        }
+        private void Triche()
+        {
+            if (P)
+            {
+                if (boutonP.Visibility == Visibility.Visible)
+                {
+                    Canvas.SetTop(cube1, Canvas.GetTop(boutonP));
+                    Canvas.SetLeft(cube1, Canvas.GetLeft(boutonP));
+
+
+                }
+                else if (boutonP1.Visibility == Visibility.Visible && boutonP2.Visibility == Visibility.Visible)
+                {
+                    Canvas.SetTop(cube1, Canvas.GetTop(boutonP1));
+                    Canvas.SetLeft(cube1, Canvas.GetLeft(boutonP1));
+                    Canvas.SetTop(cube2, Canvas.GetTop(boutonP2));
+                    Canvas.SetLeft(cube2, Canvas.GetLeft(boutonP2));
+                    if (salle == "2")
+                    {
+                        portail1S1.Visibility = Visibility.Visible;
+                        portail2S1.Visibility = Visibility.Visible;
+                        CollisionPortail(joueur, joueurBoiteCollision);
+                    }
+                    if (salle == "5")
+                    {
+                        portail1S2.Visibility = Visibility.Visible;
+                        portail2S2.Visibility = Visibility.Visible;
+                        CollisionPortail(joueur, joueurBoiteCollision);
+                    }
+                }
             }
         }
         private void BoucleJeux(object sender, EventArgs e)
