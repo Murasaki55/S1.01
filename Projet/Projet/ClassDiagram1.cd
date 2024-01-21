@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1" MembersFormat="FullSignature">
+  <Class Name="Projet.MainWindow" Collapsed="true">
+    <Position X="6.75" Y="2" Width="4.5" />
+    <TypeIdentifier>
+      <HashCode>YhoEAACQ0QhGYoAlq04AoKPEHguJQIuoIEBxFiDQVEI=</HashCode>
+      <FileName>MainWindow.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Projet.Menu">
+    <Position X="1.5" Y="2.5" Width="3.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAgGcAAAAAAAAAAAAAAAAAAAAgAQAAAAAAAAAAAgA=</HashCode>
+      <FileName>Menu.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Projet.Pause" Collapsed="true">
+    <Position X="12" Y="2.25" Width="3.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAgA=</HashCode>
+      <FileName>Pause.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
