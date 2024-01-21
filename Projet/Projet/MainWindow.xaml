@@ -9,7 +9,7 @@
     Width="1097"
     Height="753"
     WindowStartupLocation="CenterScreen"
-    mc:Ignorable="d">
+    mc:Ignorable="d" ResizeMode="NoResize">
     <Canvas Name="monCanvas" Focusable="True" KeyDown="Canvas_KeyDown" KeyUp="Canvas_KeyUp" Background="Black">
         <Rectangle Name="sol" Height="834" Width="1204" Fill="Orange" HorizontalAlignment="Left" VerticalAlignment="Center" Canvas.Top="-32" Canvas.Left="-54"/>
         <Rectangle Name="boutonP" Height="70" Width="70" Fill="Green" Canvas.Top="198" Canvas.Left="812" HorizontalAlignment="Left" VerticalAlignment="Top" Visibility="Hidden" />

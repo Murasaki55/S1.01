@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Projet"
         mc:Ignorable="d"
-        Title="Pause" Height="753" Width="1097" WindowStartupLocation="CenterScreen" Background="Black" Opacity="0.75">
+        Title="Pause" Height="753" Width="1097" WindowStartupLocation="CenterScreen" Background="Black" Opacity="0.75" ResizeMode="NoResize">
     <Grid>
         <Canvas>
             <Label x:Name ="pause" Width="294" HorizontalAlignment="Left" FontSize="100"  Content="PAUSE" Canvas.Left="416" Canvas.Top="129" Foreground="White" VerticalAlignment="Center"/>
