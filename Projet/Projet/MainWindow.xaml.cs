@@ -38,6 +38,7 @@ namespace Projet
         private Rect boutonC2BoiteCollision;
         private Rect boutonJBoiteCollision;
         private Rect porteBoiteCollision;
+        private Rect megaPorteBoiteCollision;
         private Rect murBoiteCollision;
         private Rect murBoiteCollision2;
         private Rect portail1BoiteCollision;
@@ -78,14 +79,16 @@ namespace Projet
         private ImageBrush f6Sprite = new ImageBrush();
         private ImageBrush f7Sprite = new ImageBrush();
         private ImageBrush f8Sprite = new ImageBrush();
+        private ImageBrush dialogueSprite = new ImageBrush();
 
         private readonly int VITESSE = 10;
         private readonly int VITESSECUBE = 11;
         private readonly int VITESSEBALLE = 20;
 
+        private int compteurD = 1;
         private int tempsBoutonJ = 15;
         private string salle = "";
-        private bool Gauche, Droite, Haut, Bas, E, P, Echap = false;
+        private bool Gauche, Droite, Haut, Bas, E, P, Echap, Espace, Entrer = false;
         private bool ouvert = false;
 
         private List<Rectangle> objetSupprimer = new List<Rectangle>();
@@ -94,8 +97,8 @@ namespace Projet
         private DispatcherTimer minutrietireH;
         private DispatcherTimer minutrietireV;
 
-        Pause fenetrePause;
-        Menu fenetreMenu;
+        private Pause fenetrePause;
+        private Menu fenetreMenu;
         public MainWindow()
         {
             InitializeComponent();
@@ -139,8 +142,6 @@ namespace Projet
             porte.Fill = porteSprite;
             portefinSprite.ImageSource = new BitmapImage(new Uri("images/porte2.png", UriKind.RelativeOrAbsolute));
             portefin.Fill = portefinSprite;
-            megaPorteSprite.ImageSource = new BitmapImage(new Uri("images/megaPorte1.png", UriKind.RelativeOrAbsolute));
-            megaPorte.Fill = megaPorteSprite;
 
             boutonSprite.ImageSource = new BitmapImage(new Uri("images/Bouton.png", UriKind.RelativeOrAbsolute));
             boutonP.Fill = boutonSprite;
@@ -235,19 +236,34 @@ namespace Projet
                     NumSalle.Content = "Salle : " + salle + "/5";
                 }
             }
+            if (e.Key == Key.Space)
+            {
+                if (salle == "0" && compteurD < 4)
+                {
+                    compteurD++;
+                    dialogueSprite.ImageSource = new BitmapImage(new Uri("images/bulle" + compteurD + ".png", UriKind.RelativeOrAbsolute));
+                    dialogue.Fill = dialogueSprite;
+                }
+                else if (salle == "6" && compteurD < 8)
+                {
+                    compteurD++;
+                    dialogueSprite.ImageSource = new BitmapImage(new Uri("images/bulle" + compteurD + ".png", UriKind.RelativeOrAbsolute));
+                    dialogue.Fill = dialogueSprite;
+                }
+                else
+                {
+                    dialogue.Visibility = Visibility.Hidden;
+                }
+            }
+            if (e.Key == Key.Enter)
+            {
+                Entrer = true;
 
+            }
         }
 
-        private void Menu()
-        {
-            fenetreMenu = new Menu();
-            fenetreMenu.ShowDialog();
-            if (fenetreMenu.DialogResult == false)
-                Application.Current.Shutdown();
-            salle = fenetreMenu.choixSalle;
-        }
 
-        private void Canvas_KeyUp(object sender, KeyEventArgs e)
+            private void Canvas_KeyUp(object sender, KeyEventArgs e)
         {
             if (e.Key == Key.Left)
             {
@@ -273,6 +289,18 @@ namespace Projet
             {
                 P = false;
             }
+            if (e.Key == Key.Space)
+            {
+                Espace = false;
+            }
+        }
+        private void Menu()
+        {
+            fenetreMenu = new Menu();
+            fenetreMenu.ShowDialog();
+            if (fenetreMenu.DialogResult == false)
+                Application.Current.Shutdown();
+            salle = fenetreMenu.choixSalle;
         }
 
         private void Creation_Niveaux()
@@ -281,6 +309,15 @@ namespace Projet
             {
                 case "0":
                     {
+                        dialogue.Visibility = Visibility.Visible;
+                        compteurD = 1;
+                        dialogueSprite.ImageSource = new BitmapImage(new Uri("images/bulle1.png", UriKind.RelativeOrAbsolute));
+                        dialogue.Fill = dialogueSprite;
+                        joueur.Visibility = Visibility.Visible;
+                        sol.Visibility = Visibility.Visible;
+                        solSprite.ImageSource = new BitmapImage(new Uri("images/sol.png", UriKind.RelativeOrAbsolute));
+                        sol.Fill = solSprite;
+                        porte.Visibility = Visibility.Visible;
                         //bouton
                         Canvas.SetTop(boutonP, 176);
                         Canvas.SetLeft(boutonP, 948);
@@ -296,6 +333,11 @@ namespace Projet
                     }
                 case "1":
                     {
+                        joueur.Visibility = Visibility.Visible;
+                        sol.Visibility = Visibility.Visible;
+                        solSprite.ImageSource = new BitmapImage(new Uri("images/sol.png", UriKind.RelativeOrAbsolute));
+                        sol.Fill = solSprite;
+                        porte.Visibility = Visibility.Visible;
                         //bouton
                         Canvas.SetTop(boutonP1, 369);
                         Canvas.SetLeft(boutonP1, 68);
@@ -331,6 +373,11 @@ namespace Projet
                     }
                 case "2":
                     {
+                        joueur.Visibility = Visibility.Visible;
+                        sol.Visibility = Visibility.Visible;
+                        solSprite.ImageSource = new BitmapImage(new Uri("images/sol.png", UriKind.RelativeOrAbsolute));
+                        sol.Fill = solSprite;
+                        porte.Visibility = Visibility.Visible;
                         //bouton
                         Canvas.SetTop(boutonP1, 64);
                         Canvas.SetLeft(boutonP1, 861);
@@ -386,6 +433,11 @@ namespace Projet
                     }
                 case "3":
                     {
+                        joueur.Visibility = Visibility.Visible;
+                        sol.Visibility = Visibility.Visible;
+                        solSprite.ImageSource = new BitmapImage(new Uri("images/sol.png", UriKind.RelativeOrAbsolute));
+                        sol.Fill = solSprite;
+                        porte.Visibility = Visibility.Visible;
                         //bouton
                         Canvas.SetTop(boutonP1, 667);
                         Canvas.SetLeft(boutonP1, 742);
@@ -435,6 +487,11 @@ namespace Projet
                     }
                 case "4":
                     {
+                        joueur.Visibility = Visibility.Visible;
+                        sol.Visibility = Visibility.Visible;
+                        solSprite.ImageSource = new BitmapImage(new Uri("images/sol.png", UriKind.RelativeOrAbsolute));
+                        sol.Fill = solSprite;
+                        porte.Visibility = Visibility.Visible;
                         //bouton
                         Canvas.SetTop(boutonP, 250);
                         Canvas.SetLeft(boutonP, 10);
@@ -466,6 +523,11 @@ namespace Projet
                     }
                 case "5":
                     {
+                        joueur.Visibility = Visibility.Visible;
+                        sol.Visibility = Visibility.Visible;
+                        solSprite.ImageSource = new BitmapImage(new Uri("images/sol.png", UriKind.RelativeOrAbsolute));
+                        sol.Fill = solSprite;
+                        porte.Visibility = Visibility.Visible;
                         //bouton
                         Canvas.SetTop(boutonP1, 163);
                         Canvas.SetLeft(boutonP1, 937);
@@ -545,7 +607,13 @@ namespace Projet
                     }
                 case "6":
                     {
+                        compteurD = 5;
+                        dialogue.Visibility = Visibility.Visible;
+                        dialogueSprite.ImageSource = new BitmapImage(new Uri("images/bulle5.png", UriKind.RelativeOrAbsolute));
+                        dialogue.Fill = dialogueSprite;
                         porte.Visibility = Visibility.Hidden;
+                        megaPorteSprite.ImageSource = new BitmapImage(new Uri("images/megaPorte1.png", UriKind.RelativeOrAbsolute));
+                        megaPorte.Fill = megaPorteSprite;
                         megaPorte.Visibility = Visibility.Visible;
                         //joueur
                         Canvas.SetTop(joueur, 633);
@@ -638,6 +706,30 @@ namespace Projet
             f7.Visibility = Visibility.Hidden;
             f8.Visibility = Visibility.Hidden;
         }
+        private void OuvertureMegaPorte()
+        {
+            if (compteurD == 8 && salle == "6")
+            {
+                megaPorteSprite.ImageSource = new BitmapImage(new Uri("images/megaPorte2.png", UriKind.RelativeOrAbsolute));
+                megaPorte.Fill = megaPorteSprite;
+            }
+            if (salle == "6" && dialogue.Visibility != Visibility.Visible)
+            {
+                megaPorte.Visibility = Visibility.Hidden;
+                joueur.Visibility = Visibility.Hidden;
+                ImageBrush flammeSprite = new ImageBrush();
+                flammeSprite.ImageSource = new BitmapImage(new Uri("images/flamme.png", UriKind.RelativeOrAbsolute));
+                sol.Fill = flammeSprite;
+                if (Entrer == true)
+                {
+                    Entrer = false;
+                    Menu();
+                    CacherObjet();
+                    Creation_Niveaux();
+                    NumSalle.Content = "Salle : " + salle + "/5";
+                }
+            }
+        }
         private void Sortie()
         {
             if (joueurBoiteCollision.IntersectsWith(sortieBoiteCollision) && salle == "5")
@@ -657,6 +749,23 @@ namespace Projet
                 portefin.Visibility = Visibility.Hidden;
                 sol.Visibility = Visibility.Hidden;
                 CacherObjet();
+
+                dialogue.Visibility = Visibility.Visible;
+                dialogueSprite.ImageSource = new BitmapImage(new Uri("images/bulle9.png", UriKind.RelativeOrAbsolute));
+                dialogue.Fill = dialogueSprite;
+
+                if (Espace)
+                {
+                    dialogue.Visibility = Visibility.Hidden;
+                }
+            }
+            if (Entrer == true && salle == "7" && sol.Visibility == Visibility.Hidden && dialogue.Visibility == Visibility.Hidden)
+            {
+                Entrer = false;
+                Menu();
+                CacherObjet();
+                Creation_Niveaux();
+                NumSalle.Content = "Salle : " + salle + "/5";
             }
         }
         private void CubeBouleCollision(Rectangle cube, Rect BoiteCollision)
@@ -762,7 +871,7 @@ namespace Projet
             {//contre mur ou protection bloquer personnage
                 MurCollisionJoueur();
             }
-            else
+            else if (dialogue.Visibility != Visibility.Visible)
             {//bouger le personnage
                 if (Gauche && Canvas.GetLeft(joueur) > 0)
                 {
@@ -1219,7 +1328,7 @@ namespace Projet
             {//supression des balles dans la liste de supression
                 monCanvas.Children.Remove(y);
             }
-
+            OuvertureMegaPorte();
             Ou();
             Triche();
         }

@@ -31,7 +31,7 @@
         <Rectangle Name="portail2S1" Height="90" Width="85" Fill="Pink" Canvas.Top="205" Canvas.Left="592" HorizontalAlignment="Center" VerticalAlignment="Top" Visibility="Hidden" />
         <Rectangle Name="portail1S2" Height="90" Width="85" Fill="Pink" Canvas.Top="458" Canvas.Left="410" HorizontalAlignment="Left" VerticalAlignment="Top" Visibility="Hidden" />
         <Rectangle Name="portail2S2" Height="90" Width="85" Fill="Pink" Canvas.Top="458" Canvas.Left="592" HorizontalAlignment="Left" VerticalAlignment="Center" Visibility="Hidden" />
-        <Rectangle Name="fleche" Height="16" Width="6" Fill="Red" Canvas.Top="372" Canvas.Left="42" HorizontalAlignment="Center" VerticalAlignment="Top" Visibility="Hidden" />
+        <Rectangle Name="fleche" Height="16" Width="6" Fill="Pink" Canvas.Top="371" Canvas.Left="42" HorizontalAlignment="Center" VerticalAlignment="Center" Visibility="Hidden" />
         <Rectangle Name="mur" Height="753" Width="120" Fill="DarkGray" Canvas.Left="485" HorizontalAlignment="Center" VerticalAlignment="Top" Canvas.Top="-8" Visibility="Hidden" />
         <Rectangle Name="mur2" Height="86" Width="497" Fill="DarkGray" Canvas.Top="300" HorizontalAlignment="Center" VerticalAlignment="Top" Visibility="Hidden" />
         <Rectangle Name="protectionH" Height="18" Width="474" Fill="Cyan" Canvas.Top="126" Canvas.Left="10" HorizontalAlignment="Center" VerticalAlignment="Top" Visibility="Hidden" />
@@ -48,6 +48,7 @@
         <Rectangle Name="f7" Height="70" Width="70" Fill="Red" Canvas.Top="40" Canvas.Left="610" HorizontalAlignment="Left" VerticalAlignment="Top" Visibility="Hidden" />
         <Rectangle Name="f8" Height="70" Width="70" Fill="Red" Canvas.Top="39" Canvas.Left="423" HorizontalAlignment="Left" VerticalAlignment="Top" Visibility="Hidden" />
         <Rectangle Name="joueur" Height="70" Width="65" Fill="Brown" Canvas.Top="633" Canvas.Left="20" HorizontalAlignment="Left" VerticalAlignment="Top" />
+        <Rectangle Name="dialogue" Height="840" Width="860" Fill="black" Canvas.Top="160" Canvas.Left="120" HorizontalAlignment="Left" VerticalAlignment="Top" Visibility="Hidden" />
         <Label Name="NumSalle" FontSize="22" FontWeight="Bold" Content="Salle: 0/5" />
     </Canvas>
 </Window>
